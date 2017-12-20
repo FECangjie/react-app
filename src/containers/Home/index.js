@@ -5,13 +5,15 @@ import Home from './Home/'
 
 function mapStateToProps(state) {
   return {
-    Home: state.Home
+    detail: state.Home
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    inputChange: (value) => dispatch(ACTIONS.inputChange(value))
+    inputChange: (param) => dispatch(ACTIONS.inputChange(param)),
+    inputSubmit: (param) => dispatch(ACTIONS.inputChange(param)),
+    listItemClick: (param) => dispatch(ACTIONS.inputChange(param)),
   };
 }
 

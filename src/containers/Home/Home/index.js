@@ -6,22 +6,18 @@ import Form from 'components/Form';
 class Home extends React.Component {
 
   componentWillMount(){
-    // this.setState({
-    //   list: [
-    //     {item: '1', done: false },
-    //     {item: '2', done: false },
-    //     {item: '3', done: false },
-    //   ],
-    //   newToDo: 'test'
-    // })
   }
 
   onInputSubmit = (e) => {
     event.preventDefault()
-    this.setState((previousState)=>({
-      list: [...previousState.list, {item: previousState.newToDo, done: false } ],
-      newToDo: ''
-    }))
+    debugger
+    let list = [...this.props.detail.list, {item: this.props.detail.list.newToDo, done: false }]
+    this.props.inputSubmit({ list })
+
+    // this.setState((previousState)=>({
+    //   list: [...previousState.list, {item: previousState.newToDo, done: false } ],
+    //   newToDo: ''
+    // }))
   }
 
   onListItemClick = (i) => {
@@ -44,18 +40,18 @@ class Home extends React.Component {
 
   render() {
     console.log(this.props)
-    const {Home, inputChange} = this.props
+    const {detail, inputChange} = this.props
     return (
       <div className="row">
         <div className="col-md-10 col-md-offset-1">
           <div className="panel panel-default">
             <div className="panel-body">
-              <h1>{ Home.newToDo }</h1>
+              <h1>{ detail.newToDo }</h1>
               <hr/>
-              <List listItems={ Home.list }
+              <List listItems={ detail.list }
               onClick={this.onListItemClick}
               onDelete={this.deleteListItem}/>
-              <Form items={ Home.newToDo } onChange={ (e) => inputChange({newToDo: e.target.value}) } onInputSubmit={this.onInputSubmit}/>
+              <Form items={ detail.newToDo } onChange={ (e) => inputChange({newToDo: e.target.value}) } onInputSubmit={this.onInputSubmit}/>
             </div>
           </div>
         </div>
