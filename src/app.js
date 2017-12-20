@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './components/Home';
+import { Provider } from 'react-redux';
+import Home from './containers/Home';
+import configureStore from './redux/configureStore';
+
+const store = configureStore();
 
 class App extends React.Component {
   render(){
-    return(<Home>
-        Hello World
-      </Home>
+    return(
+      <Provider store={store}>
+        <Home />
+      </Provider>
     )
   }
 }

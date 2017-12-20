@@ -23,7 +23,8 @@ module.exports = {
 	resolve: {
 		extensions: ['.js', '.json', '.less'],
 		alias: {
-
+			components: path.resolve(ROOT, './src/components'),
+			ducks: path.resolve(ROOT, './src/redux/modules')
 		}
 	},
 	devServer: { // webpack-dev-server配置

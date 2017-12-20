@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 
 // 模块引入
-import toDoApp from './modules/toDoApp';
+import Home from './modules/Home';
 
 // actions日志
 const loggerMiddleware = createLogger();
@@ -10,5 +10,9 @@ const loggerMiddleware = createLogger();
 const createStoreWithMiddleware = applyMiddleware( loggerMiddleware)(createStore);
 // 组合模块
 const reducer = combineReducers({
-  toDoApp
+  Home
 });
+
+
+const configureStore = (initialState) => createStoreWithMiddleware(reducer, initialState);
+export default configureStore;

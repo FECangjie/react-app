@@ -1,22 +1,19 @@
 import React from 'react';
-import List from '../List';
-import Form from '../Form';
+
+import List from 'components/List';
+import Form from 'components/Form';
 
 class Home extends React.Component {
 
   componentWillMount(){
-    this.setState({
-      list: [
-        {item: '1', done: false },
-        {item: '2', done: false },
-        {item: '3', done: false },
-      ],
-      newToDo: 'test'
-    })
-  }
-
-  onInputChange = (event) => {
-    this.setState({ newToDo: event.target.value}); // updates state to new value when user changes the input value
+    // this.setState({
+    //   list: [
+    //     {item: '1', done: false },
+    //     {item: '2', done: false },
+    //     {item: '3', done: false },
+    //   ],
+    //   newToDo: 'test'
+    // })
   }
 
   onInputSubmit = (e) => {
@@ -47,17 +44,18 @@ class Home extends React.Component {
 
   render() {
     console.log(this.props)
+    const {Home, inputChange} = this.props
     return (
       <div className="row">
         <div className="col-md-10 col-md-offset-1">
           <div className="panel panel-default">
             <div className="panel-body">
-              <h1>{this.state.newToDo}</h1>
+              <h1>{ Home.newToDo }</h1>
               <hr/>
-              <List listItems={this.state.list}
+              <List listItems={ Home.list }
               onClick={this.onListItemClick}
               onDelete={this.deleteListItem}/>
-              <Form items={this.state.newToDo} onChange={this.onInputChange} onInputSubmit={this.onInputSubmit}/>
+              <Form items={ Home.newToDo } onChange={ (e) => inputChange({newToDo: e.target.value}) } onInputSubmit={this.onInputSubmit}/>
             </div>
           </div>
         </div>
